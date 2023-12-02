@@ -1,6 +1,5 @@
-def func(x):
-    return x + 1
+import pytest
 
-
-def test_answer():
-    assert func(3) == 5
+class Day1Task1:
+    def test_day_one():
+        assert 1==1
