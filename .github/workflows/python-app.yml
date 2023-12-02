@@ -39,4 +39,4 @@ jobs:
         pytest
     - name: Run App
       run: |
-        python dayOne.py
+        python day1.py
