@@ -23,5 +23,5 @@ def test_day_one(read_data):
         sumNoList.append(int(cleanNumber))
     
     total = sum(sumNoList)
-    assert total == 281
+    assert total == 367
     print(total)

@@ -38,7 +38,12 @@ def parse_numbers(numbers):
 
 def getFirstLastNum(line):
   print("Line: " + line.strip())
-  numbers = re.findall(r"(\d|one|two|three|four|five|six|seven|eight|nine)+?", line.strip())
-  parsedNums = parse_numbers(numbers)
+  # (?=(\d|(one|two|three|four|five|six|seven|eight|nine)))
+  # (\d|one|two|three|four|five|six|seven|eight|nine)+
+  numbers = re.findall(r"(?=(\d|(one|two|three|four|five|six|seven|eight|nine)))", line.strip())
+  allNums = []
+  for n in numbers:
+    allNums.append(n[0])
+  parsedNums = parse_numbers(allNums)
   return process_numbers(parsedNums)
   
