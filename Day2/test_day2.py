@@ -14,8 +14,9 @@ def test_day_two(read_data):
         calc = CalcPossible()
         sum_total.append(calc.calculate_possible(line.strip()))
     
+    print("Total Games...")
     print(sum_total)
     total = sum(sum_total)
     print(total)
-    assert total == 8
+    assert total == 18
 

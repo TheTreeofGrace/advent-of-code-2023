@@ -22,6 +22,7 @@ def test_day_one(read_data):
         assert cleanNumber != (int(numbers[0]) + int(numbers[-1]))
         sumNoList.append(int(cleanNumber))
     
+    print("Totcal Calculations...")
     total = sum(sumNoList)
     assert total == 367
     print(total)
