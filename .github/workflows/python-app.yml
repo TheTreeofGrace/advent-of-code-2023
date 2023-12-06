@@ -35,6 +35,3 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-    - name: Run App
-      run: |
-        python day1.py
