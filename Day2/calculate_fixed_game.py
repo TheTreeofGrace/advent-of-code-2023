@@ -20,6 +20,8 @@ class CalcPossible():
             "blue": 0
         }
 
+    def get_games(_, line):
+        return re.split(";", line)
     def get_cubes(_, line):
         cubes = re.findall(r"(?!(:))((\d+) (red|blue|green))", line)
         return cubes
@@ -30,12 +32,36 @@ class CalcPossible():
 
     def get_game_id(_, line):
         return re.search(r"(?!(Game ))\d+", line).group()
+    
+    def reset_game(self):
+        self.game_cubes = {
+            "red": 0,
+            "green": 0,
+            "blue": 0
+        }
+
+    def check_possible(self):
+        for val in max_colours:
+            if(max_colours[val] < self.game_cubes[val]):
+                return False
+        return True
 
     def calculate_possible(self, line):
         gameID = self.get_game_id(line)
-        cubes = self.get_cubes(line)
-        self.process_value(cubes)
-        for val in max_colours:
-            if(max_colours[val] < self.game_cubes[val]):
-                return 0
-        return int(gameID)
+        games = self.get_games(line)
+        print(games)
+
+        isPoss = False
+
+        for game in games:
+            cubes = self.get_cubes(game)
+            self.process_value(cubes)
+            isPoss = self.check_possible()
+
+            if(isPoss):
+                self.reset_game()
+
+        if(isPoss):
+                return int(gameID)
+        return 0
+        
